@@ -1,0 +1,9 @@
+[Unit]
+Description=Keep the SDDM login wallpaper/avatar in sync
+
+[Path]
+PathChanged=%h/.cache/quickshell/wallpaper_picker/current_wallpaper.png
+PathChanged=%h/.cache/quickshell/dash/avatar.png
+
+[Install]
+WantedBy=default.target

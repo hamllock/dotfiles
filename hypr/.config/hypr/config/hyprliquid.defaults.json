@@ -1,0 +1,20 @@
+{
+  "global": {
+    "effect": "liquid_glass",
+    "tint": [16, 16, 16, 0.55],
+    "glass_thickness": 120,
+    "highlight_style": 4,
+    "glass_dispersion": true,
+    "brightness": 1.0,
+    "glass_ior": 1.035,
+    "color_scheme": "dark"
+  },
+  "surfaces": {
+    "qs-master":   { "enabled": true, "corner_radius": 48 },
+    "qs-topbar":   { "enabled": true, "corner_radius": 16, "glass_dispersion": false },
+    "vicinae":     { "enabled": true, "corner_radius": 48, "tint": [16, 16, 16, 0.75] },
+    "swayosd":     { "enabled": true, "corner_radius": 32 },
+    "qs-popups":   { "enabled": true, "corner_radius": 24 },
+    "glass-tuner": { "enabled": true, "corner_radius": 20 }
+  }
+}

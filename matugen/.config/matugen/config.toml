@@ -1,0 +1,123 @@
+[config]
+reload_apps = false
+
+[templates.quickshell]
+input_path = "~/.config/matugen/templates/qs_colors.json.template"
+output_path = "~/.config/hypr/scripts/quickshell/qs_colors.json"
+
+[templates.kitty]
+input_path = "~/.config/matugen/templates/kitty-colors.conf.template"
+output_path = "~/.config/kitty/kitty-matugen-colors.conf"
+
+[templates.neovim]
+input_path = "~/.config/matugen/templates/nvim-colors.lua.template"
+output_path = "~/.config/nvim/matugen_colors.lua"
+
+[templates.swayosd]
+input_path = "~/.config/matugen/templates/swayosd.css.template"
+output_path = "~/.config/swayosd/style.css"
+
+[templates.gtk]
+input_path = "~/.config/matugen/templates/gtk.css.template"
+output_path = "~/.cache/matugen/colors-gtk.css"
+
+[templates.qt5ct]
+input_path = "~/.config/matugen/templates/qtct.conf.template"
+output_path = "~/.config/qt5ct/colors/matugen.conf"
+
+[templates.qt6ct]
+input_path = "~/.config/matugen/templates/qtct.conf.template"
+output_path = "~/.config/qt6ct/colors/matugen.conf"
+
+[templates.qt5_style]
+input_path = "~/.config/matugen/templates/qt-style.qss.template"
+output_path = "~/.config/qt5ct/qss/matugen-style.qss"
+
+[templates.qt6_style]
+input_path = "~/.config/matugen/templates/qt-style.qss.template"
+output_path = "~/.config/qt6ct/qss/matugen-style.qss"
+
+[templates.hyprland]
+input_path = '~/.config/matugen/templates/hyprland.lua.template'
+output_path = '~/.config/hypr/colors.lua'
+
+[templates.nvim]
+input_path = '~/.local/share/nvim/lazy/WallSync/templates/matugen.lua'
+output_path = '~/.cache/wal/base46-dark.lua'
+
+[templates.nvimlight]
+input_path = '~/.local/share/nvim/lazy/WallSync/templates/matugen.lua'
+output_path = '~/.cache/wal/base46-light.lua'
+
+[templates.pywal]
+input_path = '~/.local/share/nvim/lazy/WallSync/templates/waltemplate'
+output_path = '~/.cache/wal/colors'
+
+[config.custom_colors.red]
+color = "#FF0000"
+blend = true
+
+[config.custom_colors.green]
+color = "#00FF00"
+blend = true
+
+[config.custom_colors.yellow]
+color = "#FFFF00"
+blend = true
+
+[config.custom_colors.blue]
+color = "#0000FF"
+blend = true
+
+[config.custom_colors.magenta]
+color = "#FF00FF"
+blend = true
+
+[config.custom_colors.cyan]
+color = "#00FFFF"
+blend = true
+
+[config.custom_colors.white]
+color = "#FFFFFF"
+blend = true
+
+# ── zen-wabi: Zen Browser CSS templates ───────────────────────────────────────
+# These render the zen-wabi wallpaper theme into Zen Browser's chrome directory
+# automatically on every wallpaper/palette change. No theme_switcher binary needed.
+# Profile: ud2mymkw.Default (release)-1
+[templates.zen_vars]
+input_path = "~/.config/matugen/templates/zen-vars.json.template"
+output_path = "~/.config/zen/ud2mymkw.Default (release)-1/chrome/matugen-vars.json"
+
+[templates.zen_userchrome]
+input_path = "~/.config/matugen/templates/zen-userChrome.css.template"
+output_path = "~/.config/zen/ud2mymkw.Default (release)-1/chrome/matugen-userstyles.css"
+
+[templates.zen_usercontent]
+input_path = "~/.config/matugen/templates/zen-userContent.css.template"
+output_path = "~/.config/zen/ud2mymkw.Default (release)-1/chrome/matugen-userstyles-content.css"
+
+[templates.zen_github]
+input_path = "~/.config/matugen/templates/zen-userContent.github.template"
+output_path = "~/.config/zen/ud2mymkw.Default (release)-1/chrome/matugen-userstyles-github.css"
+# ─────────────────────────────────────────────────────────────────────────────
+
+[templates.vicinae]
+input_path = './templates/vicinae.toml'
+output_path = '~/.local/share/vicinae/themes/matugen.toml'
+post_hook = 'vicinae theme set matugen'
+
+[templates.discord]
+input_path = '~/.config/matugen/templates/midnight.theme.css.template'
+output_path = '~/.config/vesktop/themes/midnight.theme.css'
+
+[templates.starship]
+input_path = '~/.config/matugen/templates/starship.toml.template'
+output_path = '~/.config/starship.toml'
+
+# Zen's real userContent.css, rendered with actual colours. The raw template used to
+# sit here with {{placeholders}}, which made the page text-selection colour invalid
+# (transparent) whenever matugen-bridge failed to set the variables in a tab.
+[templates.zen_usercontent_profile]
+input_path = "~/.config/matugen/templates/zen-userContent.css.template"
+output_path = "~/.config/zen/ud2mymkw.Default (release)-1/chrome/userContent.css"

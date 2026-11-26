@@ -1,0 +1,14 @@
+# Secrets
+.env
+**/fish/fish_variables
+
+# Proprietary fonts (Apple SF Pro: not redistributable)
+**/sddm/maclock/fonts/*.otf
+
+# Junk
+__pycache__/
+*.pyc
+*.bak
+*.bak-*
+*.old
+*~

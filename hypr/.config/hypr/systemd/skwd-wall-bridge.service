@@ -1,0 +1,12 @@
+[Unit]
+Description=Run matugen + lock/SDDM wallpaper sync when skwd-wall applies a wallpaper
+After=skwd-walld.service
+BindsTo=skwd-walld.service
+
+[Service]
+ExecStart=%h/.config/hypr/scripts/wallpaper/skwd_bridge.sh
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=skwd-walld.service
