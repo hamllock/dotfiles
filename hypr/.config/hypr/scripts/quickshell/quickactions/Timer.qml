@@ -123,8 +123,8 @@ Item {
     property bool isTimerRunning: stateCache.timerTargetEpoch > 0
     property bool isTimerIdle: !isTimerRunning && stateCache.timerRemainingMs === stateCache.timerPresetMs
 
-    // Visibility gate — `parent` is the Loader from Floating.qml whose `visible`
-    // is bound to `index === activeIndex && expandProgress > 0.01`. Falling back
+    // Visibility gate — `parent` is the Loader in tools/ToolsPopup.qml; its `visible`
+    // follows the popup being shown. Falling back
     // to true keeps the module functional if loaded outside that Loader.
     property bool widgetVisible: parent !== null && parent.visible !== undefined ? parent.visible : true
     property bool anyTimerActive: stateCache.timerTargetEpoch > 0 || stateCache.swStartEpoch > 0 || stateCache.pomoTargetEpoch > 0

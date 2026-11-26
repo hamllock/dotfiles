@@ -15,7 +15,7 @@ Item {
     // =========================================================
     // --- MODULE CAPABILITIES EXPORT
     // =========================================================
-    // Tells the parent Floating.qml to use a "1 Full Block" background grid
+    // Tells tools/ToolsPopup.qml to use a "1 Full Block" background grid
     property int requestedLayoutTemplate: 2
 
     // ADDED: Track whether this tab is currently the active one to isolate inputs

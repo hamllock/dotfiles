@@ -11,7 +11,7 @@ Item {
     Caching { id: paths }
 
     // By NOT declaring these as local properties, we allow QML to naturally 
-    // inherit them from the parent Loader in Floating.qml
+    // inherit them from the parent Loader in tools/ToolsPopup.qml
     property string safeActiveEdge: typeof activeEdge !== "undefined" ? activeEdge : "left"
 
     function s(val) {
@@ -38,7 +38,7 @@ Item {
         return 0; 
     }
 
-    // Mathematical coordinate mapping to perfectly sync with Floating.qml skeletons
+    // Mathematical coordinate mapping to line up with the ToolsPopup background tiles
     property real sp: s(10)
     function cellX(mx) { return (mx * orientedRoot.width) + (mx > 0 ? sp / 2 : 0); }
     function cellY(my) { return (my * orientedRoot.height) + (my > 0 ? sp / 2 : 0); }
@@ -118,7 +118,7 @@ Item {
     Timer {
         id: diskTimer
         interval: 60000
-        running: true; repeat: true; triggeredOnStart: true
+        running: root.widgetVisible; repeat: true; triggeredOnStart: true
         onTriggered: { diskProc.running = false; diskProc.running = true; }
     }
 

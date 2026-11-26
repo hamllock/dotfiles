@@ -10,5 +10,12 @@ trap 'rm -f "$PIPE"; kill $MONITOR_PID 2>/dev/null; exit 0' EXIT INT TERM
 LC_ALL=C setpriv --pdeathsig KILL pactl subscribe 2>/dev/null > "$PIPE" &
 MONITOR_PID=$!
 
-# volume, mute or default device; not "sink-input" (app streams change constantly)
-grep -m 1 -E "on (sink|server|card) #" < "$PIPE" > /dev/null
+state() { LC_ALL=C wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null; }
+initial="$(state)"
+
+while read -r line; do
+    case "$line" in
+        *"on server #"*) break ;;
+        *"on sink #"*|*"on card #"*) [ "$(state)" != "$initial" ] && break ;;
+    esac
+done < "$PIPE"

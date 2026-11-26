@@ -233,7 +233,7 @@ Item {
     // ---------------- startup helpers ----------------
     readonly property var coreStartup: ["hyprpolkitagent", "hypridle", "quickshell -p", "focustime/launch_daemon.sh",
         "scripts/init.sh", "settings_watcher.sh", "playerctld", "swayosd-server", "cliphist store",
-        "volume_listener.sh", "update_notifier.sh", "start vicinae"]
+        "volume_listener.sh", "start vicinae"]
     function isCore(cmd) { return !!cmd && root.coreStartup.some(c => cmd.indexOf(c) >= 0); }
 
     // ---------------- display ----------------

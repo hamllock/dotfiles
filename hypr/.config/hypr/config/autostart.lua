@@ -18,7 +18,6 @@ exec_once("swayosd-server --top-margin 0.9 --style \"$HOME/.config/swayosd/style
 exec_once("wl-paste --type text --watch cliphist store")
 exec_once("wl-paste --type image --watch cliphist store")
 exec_once("~/.config/hypr/scripts/volume_listener.sh")
-exec_once("~/.config/hypr/scripts/update_notifier.sh")
 exec_once("systemctl --user start vicinae")
 exec_once("vesktop")
 exec_once("sleep 4 && bash ~/.config/hypr/scripts/qs_manager.sh open dash")

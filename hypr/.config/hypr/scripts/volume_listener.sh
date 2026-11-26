@@ -1,40 +1,21 @@
 #!/usr/bin/env bash
 
-# Helper functions to get current state
-get_sink() { pactl get-default-sink; }
-get_vol() { pamixer --get-volume; }
-get_mute() { pamixer --get-mute; }
+sink()  { pactl get-default-sink; }
+state() { LC_ALL=C wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null; }
 
-# 1. Initialize state
-last_sink=$(get_sink)
-last_vol=$(get_vol)
-last_mute=$(get_mute)
+last_sink=$(sink)
+last_state=$(state)
 
-# 2. Loop through events
-pactl subscribe | grep --line-buffered "Event 'change' on sink" | while read -r line; do
-    
-    current_sink=$(get_sink)
-    current_vol=$(get_vol)
-    current_mute=$(get_mute)
-
-    # CHECK 1: Did the Output Device change? (e.g. Headphones connected)
-    if [[ "$current_sink" != "$last_sink" ]]; then
-        # The device changed. We do NOT want a popup for this.
-        # Just update our tracking variables to the new device's levels.
-        last_sink="$current_sink"
-        last_vol="$current_vol"
-        last_mute="$current_mute"
+LC_ALL=C pactl subscribe | grep --line-buffered -E "Event 'change' on (sink|server) #" | while read -r line; do
+    if [[ "$line" == *"on server #"* ]]; then
+        last_sink=$(sink)
+        last_state=$(state)
         continue
     fi
 
-    # CHECK 2: Did the Volume/Mute actually change on the SAME device?
-    if [[ "$current_vol" != "$last_vol" ]] || [[ "$current_mute" != "$last_mute" ]]; then
-        
-        # Trigger OSD (without changing volume)
-        swayosd-client --output-volume 0
+    current_state=$(state)
+    [[ "$current_state" == "$last_state" ]] && continue
+    last_state="$current_state"
 
-        # Update tracking
-        last_vol="$current_vol"
-        last_mute="$current_mute"
-    fi
+    swayosd-client --output-volume 0
 done

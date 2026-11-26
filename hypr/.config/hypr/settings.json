@@ -623,9 +623,6 @@
       "command": "~/.config/hypr/scripts/volume_listener.sh"
     },
     {
-      "command": "~/.config/hypr/scripts/update_notifier.sh"
-    },
-    {
       "command": "systemctl --user start vicinae"
     },
     {

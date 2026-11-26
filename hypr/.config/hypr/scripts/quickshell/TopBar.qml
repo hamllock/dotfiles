@@ -36,9 +36,6 @@ Variants {
                         barWindow.pendingReload = true
                     }
                 }
-                function toggleUpdate() {
-                    barWindow.forceUpdateShow = !barWindow.forceUpdateShow
-                }
             }
 
             required property var modelData
@@ -90,9 +87,6 @@ Variants {
 
             property bool isRecording: false
             
-            property bool updateAvailable: false
-            property bool forceUpdateShow: false
-            property bool isUpdateVisible: updateAvailable || forceUpdateShow
             
             property int workspaceCount: 8
             
@@ -151,28 +145,6 @@ Variants {
  	         	running = true;
  	        }
 	    }	  
-            Process {
-	        id: updatePoller
-	        command: ["bash", "-c", "if [ -f " + paths.getCacheDir("updater") + "/update_pending ]; then echo '1'; else echo '0'; fi"]
-	        running: true
-	        stdout: StdioCollector {
-	            onStreamFinished: {
-	                barWindow.updateAvailable = (this.text.trim() === "1");
-	            }
-	        }
-	    }
-	    
-	    Process {
-	        id: updateWatcher
-	        running: true
-	        command: ["bash", "-c", "setpriv --pdeathsig KILL inotifywait -qq -e create,delete,close_write " + paths.getCacheDir("updater") + "/ 2>/dev/null || sleep 5"]
-	        onExited: {
-	            updatePoller.running = false;
-	            updatePoller.running = true;
-	            running = false;
-	            running = true;
-	        }
-	    }
 	                
             Process {
                 id: settingsReader

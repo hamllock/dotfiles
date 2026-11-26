@@ -32,19 +32,10 @@ if status is-interactive
     abbr la 'ls -a'
     abbr lla 'ls -la'
 
-    # Custom colours (skip inside kitty to prevent overriding native matugen theme)
-    if not set -q KITTY_WINDOW_ID
-        cat ~/.local/state/caelestia/sequences.txt 2> /dev/null
-    end
-
-    # For jumping between prompts in foot terminal
     function mark_prompt_start --on-event fish_prompt
         echo -en "\e]133;A\e\\"
     end
     
-    # Custom fish config
-    source ~/.config/caelestia/user-config.fish 2> /dev/null
-
     zoxide init fish | source
 end
 

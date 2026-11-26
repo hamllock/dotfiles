@@ -52,7 +52,6 @@ function getLayout(name, mx, my, mw, mh, userScale) {
 
         // --- Extralarge / Custom Centered ---
         "calendar":  { w: s(1450, scale), h: s(750, scale), rx: mw - s(1455, scale), ry: s(60, scale), comp: "calendar/CalendarPopup.qml" },
-	"updater": { w: s(950, scale), h: s(850, scale), rx: Math.floor((mw/2)-(s(950, scale)/2)), ry: Math.floor((mh/2)-(s(850, scale)/2)), comp: "updater/UpdaterPopup.qml" },
         
 
         
