@@ -51,3 +51,7 @@ Uninstall a package: `stow -D <package>`.
 - **Weather:** copy `hypr/.config/hypr/scripts/quickshell/calendar/.env.example` to `.env` and fill in an [OpenWeather](https://openweathermap.org/api) key.
 - **Neovim language servers** come from Mason. The LeetCode dashboard expects these: `:MasonInstall clangd clang-format pyright intelephense rust-analyzer` (TypeScript/JavaScript use typescript-tools, which needs `typescript` from npm).
 - **SDDM fonts:** the `maclock` SDDM theme uses Apple's SF Pro fonts, which aren't included (license). Download them from [Apple](https://developer.apple.com/fonts/) and put the `.otf` files in `hypr/.config/hypr/sddm/maclock/fonts/`.
+
+## License
+
+MIT — see [LICENSE](LICENSE). This covers my own configs and scripts; third-party components credited above keep their own licenses, and the proprietary SF Pro fonts are not included.
