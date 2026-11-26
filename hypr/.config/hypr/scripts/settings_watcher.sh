@@ -160,19 +160,23 @@ fi
 
 echo "Started watching settings directories for changes..."
 
-inotifywait -m -q -e close_write,moved_to --format '%w%f' "$(dirname "$SETTINGS_FILE")" "$(dirname "$ENV_FILE")" | while read -r filepath; do
+# Watch the real directories (~/.config/hypr is a Stow symlink; inotifywait drops the
+# "/" between dir and file name for symlinked paths) and compare resolved paths.
+SETTINGS_REAL="$(readlink -f "$SETTINGS_FILE")"
+ENV_REAL="$(readlink -f "$(dirname "$ENV_FILE")")/$(basename "$ENV_FILE")"
+inotifywait -m -q -e close_write,moved_to --format '%w%f' "$(dirname "$SETTINGS_REAL")/" "$(dirname "$ENV_REAL")/" | while read -r filepath; do
 
     # ---------------------------------------------------------
     # SETTINGS JSON TRIGGER
     # ---------------------------------------------------------
-    if [[ "$filepath" == "$SETTINGS_FILE" ]]; then
+    if [[ "$filepath" == "$SETTINGS_REAL" ]]; then
         compile_settings
     fi
 
     # ---------------------------------------------------------
     # .ENV WEATHER TRIGGER
     # ---------------------------------------------------------
-    if [[ "$filepath" == "$ENV_FILE" ]]; then
+    if [[ "$filepath" == "$ENV_REAL" ]]; then
         echo ".env updated! Forcing weather cache refresh..."
         if [ -x "$WEATHER_SCRIPT" ]; then
             "$WEATHER_SCRIPT" --getdata &
